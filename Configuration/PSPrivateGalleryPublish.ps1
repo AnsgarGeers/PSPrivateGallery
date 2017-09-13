@@ -1,7 +1,7 @@
 ﻿Configuration PSPrivateGalleryPublish
 {
     Import-DscResource -ModuleName PSGallery
-    Import-DscResource -ModuleName PackageManagementProviderResource
+    Import-DscResource -ModuleName PackageManagementProviderResource -ModuleVersion 1.0.3
 
     Node $AllNodes.Where{$_.Role -eq 'Gallery'}.Nodename
     {    
@@ -34,10 +34,11 @@
         # Local Gallery User
         PSGalleryUser PrivateGalleryUser
         {
-            DatabaseInstance      = $Node.SQLInstance
-            DatabaseName          = $Node.DatabaseName
-            Ensure                =  'Present'
+            DatabaseInstance      = "$($Node.SQLServerName)\$($Node.SQLInstanceName)"
+            DatabaseName          = $Node.SQLDatabaseName
+            Ensure                = 'Present'
             UserCredential        = $GalleryUserCredential
+            #AdminSQLCredential    = $GalleryAppPoolCredential
             PsDscRunAsCredential  = $GalleryAppPoolCredential
             EmailAddress          = $Node.EmailAddress
             ApiKey                = $Node.ApiKey

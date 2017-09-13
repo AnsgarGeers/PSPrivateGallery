@@ -8,8 +8,9 @@
             GalleryAdminCredFile        = 'C:\PSPrivateGallery\Configuration\GalleryAdminCredFile.clixml'
             GalleryUserCredFile         = 'C:\PSPrivateGallery\Configuration\GalleryUserCredFile.clixml'
                         
-            SQLInstance                 = '(LocalDb)\PSGallery'
-            DatabaseName                = 'PSGallery'
+            SQLServerName               = '(LocalDB)'
+            SQLInstanceName             = 'PSGallery'
+            SQLDatabaseName             = 'PSGallery'
 
             EmailAddress                = 'PSPrivateGalleryAdmin@Contoso.com'
             ApiKey                      = 'c34d0782-b5ad-4b45-9165-a168b7f0436f'
@@ -18,7 +19,7 @@
             PrivateGalleryLocation      = 'http://localhost:8080'
 
             SourceGalleryName          = 'PSGallery'
-            SourceGalleryLocation      = 'https://www.powershellgallery.com'
+            SourceGalleryLocation      = 'https://www.powershellgallery.com/api/v2'
             
             Modules                     = @(
                                             @{
@@ -34,8 +35,7 @@
                                                 MinimumVersion = '1.4'
                                             }
                                             @{ 
-                                                ModuleName = 'ARTools'
-                                                RequiredVersion = '1.0'
+                                                ModuleName = 'Pester'
                                             }
                                         )
         }                               
